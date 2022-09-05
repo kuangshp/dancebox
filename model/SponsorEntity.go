@@ -7,9 +7,6 @@ import (
 	"strings"
 
 	"gorm.io/gorm"
-
-	"dancebox-admin-api/global"
-	"dancebox-admin-api/utils"
 )
 
 type SponsorEntity struct {
@@ -45,31 +42,3 @@ func (s *SponsorEntity) TableName() string {
 	return "sponsor"
 }
 
-// BeforeCreate 创建前的钩子函数
-func (s *SponsorEntity) BeforeCreate(tx *gorm.DB) (err error) {
-	return getAddressByCityId(s, tx)
-}
-
-// BeforeUpdate 更新数据的钩子函数
-func (s *SponsorEntity) BeforeUpdate(tx *gorm.DB) (err error) {
-	return getAddressByCityId(s, tx)
-}
-
-// getAddressByCityId 根据城市id获取具体地址及经纬度
-func getAddressByCityId(s *SponsorEntity, tx *gorm.DB) (err error) {
-	// 根据城市id查询地址信息
-	var areaEntity AreaEntity
-	if result := tx.Where("id=?", s.CityID).First(&areaEntity).Error; result != nil {
-		global.Logger.Error("主办方表的钩子函数中查询地址失败" + result.Error())
-		return errors.New("创建错误")
-	}
-	var addressList = strings.Split(areaEntity.MergerName, ",")
-	// 去除第一个元素
-	addressList = addressList[1:]
-	var address = strings.Join(addressList, "") + s.Address
-	s.FullAddress = address
-	// 根据地址查询经纬度
-	lng, lat := utils.GetLngLatByAddress(address)
-	s.Location = fmt.Sprintf("%f,%f", lat, lng)
-	return
-}

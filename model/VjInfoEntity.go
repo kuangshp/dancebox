@@ -5,8 +5,6 @@ import (
 	"time"
 
 	"gorm.io/gorm"
-
-	"dancebox-admin-api/utils"
 )
 
 type VjInfoEntity struct {
@@ -33,10 +31,4 @@ type VjInfoEntity struct {
 
 func (t *VjInfoEntity) TableName() string {
 	return "vj_info"
-}
-
-// BeforeCreate 创建前的钩子函数
-func (v *VjInfoEntity) BeforeCreate(tx *gorm.DB) (err error) {
-	v.SocketId = utils.UuIdV4()
-	return nil
 }

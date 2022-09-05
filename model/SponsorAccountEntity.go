@@ -1,7 +1,6 @@
 package model
 
 import (
-	"dancebox-admin-api/utils"
 	"errors"
 	"gorm.io/gorm"
 	"time"
@@ -25,20 +24,4 @@ type SponsorAccountEntity struct {
 
 func (t *SponsorAccountEntity) TableName() string {
 	return "sponsor_account"
-}
-
-// BeforeCreate 创建前的钩子函数
-func (s *SponsorAccountEntity) BeforeCreate(tx *gorm.DB) (err error) {
-	// 对密码进行加密
-	return autoGeneratePassword(s)
-}
-
-// 钩子函数处理舞蹈
-func autoGeneratePassword(s *SponsorAccountEntity) (err error) {
-	newPassword, err := utils.GeneratePassword(s.Password)
-	if err != nil {
-		return errors.New("密码加密错误")
-	}
-	s.Password = newPassword
-	return nil
 }
