@@ -3,8 +3,6 @@ package model
 import (
 	"database/sql"
 	"time"
-
-	"gorm.io/gorm"
 )
 
 type VjInfoEntity struct {

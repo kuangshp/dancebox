@@ -1,15 +1,5 @@
 package model
 
-import (
-	"errors"
-	"fmt"
-	"os"
-	"strconv"
-	"strings"
-
-	"gorm.io/gorm"
-)
-
 type ActivityEntity struct {
 	BaseEntity
 	Title          string    `gorm:"column:title" json:"title"`                             // 活动标题

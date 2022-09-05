@@ -1,13 +1,6 @@
 package model
 
-import (
-	"database/sql"
-	"errors"
-	"fmt"
-	"strings"
-
-	"gorm.io/gorm"
-)
+import "database/sql"
 
 type SponsorEntity struct {
 	BaseEntity
@@ -41,4 +34,3 @@ type SponsorEntity struct {
 func (s *SponsorEntity) TableName() string {
 	return "sponsor"
 }
-

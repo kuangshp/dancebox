@@ -1,10 +1,6 @@
 package model
 
-import (
-	"errors"
-	"gorm.io/gorm"
-	"time"
-)
+import "time"
 
 type SponsorAccountEntity struct {
 	BaseEntity
