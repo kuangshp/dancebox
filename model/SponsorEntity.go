@@ -29,6 +29,7 @@ type SponsorEntity struct {
 	IDCheckedCount int           `gorm:"column:id_checked_count;default:0;NOT NULL" json:"IDCheckedCount"` // 验证身份证可调用条数
 	IsCloseInform  int           `gorm:"column:is_close_inform;default:0;NOT NULL" json:"isCloseInform"`   // 是否关闭后台提示,0表示不关闭,1表示关闭
 	IsLimitInform  int           `gorm:"column:is_limit_inform;default:0;NOT NULL" json:"isLimitInform"`   // 是否已发送身份验证短信调用次数不足,0表示还未发送，1表示已经发送过
+	SocketId       string        `gorm:"socket_id" json:"socketId"`                                        // websocket连接的id
 }
 
 func (s *SponsorEntity) TableName() string {
