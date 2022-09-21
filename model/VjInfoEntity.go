@@ -18,6 +18,7 @@ type VjInfoEntity struct {
 	GroupName2       *string       `gorm:"group_name2" json:"groupName2"`              // 分组二名称
 	ThemeId          int64         `gorm:"theme_id" json:"themeId"`                    // 关联vj_theme表中主键id
 	Level            int64         `gorm:"level" json:"level"`                         // 比赛级别：比如32强、16强、8强、4强、2强
+	SocketId         string        `gorm:"socket_id" json:"socketId"`                  // websocket连接的id
 	PrimaryBg        *string       `gorm:"primary_bg" json:"primaryBg"`                // 主背景图地址
 	Bg32             *string       `gorm:"bg32" json:"bg32"`                           // 32强背景图
 	Bg16             *string       `gorm:"bg16" json:"bg16"`                           // 16强背景图
