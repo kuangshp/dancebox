@@ -1,6 +1,8 @@
 package model
 
-import "database/sql"
+import (
+	"database/sql"
+)
 
 type SponsorEntity struct {
 	BaseEntity
@@ -19,6 +21,7 @@ type SponsorEntity struct {
 	Location       string        `gorm:"column:location" json:"location"`                                  // 具体地址经纬度
 	Description    string        `gorm:"column:description" json:"description"`                            // 描素
 	IsTop          sql.NullInt64 `gorm:"column:is_top;default:0" json:"isTop"`                             // 是否置顶,0是非置顶，1是置顶
+	IsRecommend    sql.NullInt64 `gorm:"column:is_recommend;default:0" json:"isRecommend"`                 // 是否推荐,0是非推荐，1是推荐
 	WechatUrl      *string       `gorm:"column:wechat_url" json:"wechatUrl"`                               // 微信二维码
 	WechatName     *string       `gorm:"column:wechat_name" json:"wechatName"`                             // 微信号
 	LookCount      int           `gorm:"column:look_count;default:0" json:"lookCount"`                     // 浏览数
