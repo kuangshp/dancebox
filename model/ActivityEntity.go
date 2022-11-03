@@ -3,6 +3,7 @@ package model
 type ActivityEntity struct {
 	BaseEntity
 	Title          string    `gorm:"column:title" json:"title"`                             // 活动标题
+	Status         int64     `gorm:"column:status" json:"status"`                           // 上下架，1表示上架，0表示下架
 	TypeID         int       `gorm:"column:type_id" json:"typeId"`                          // 活动类型Id
 	LevelID        int       `gorm:"column:level_id" json:"levelId"`                        // 活动级别Id
 	SponsorID      int       `gorm:"column:sponsor_id" json:"sponsorId"`                    // 主办方id
